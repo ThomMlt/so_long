@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/20 16:14:10 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/01/23 22:21:32 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,15 @@ typedef struct s_data
 	int 	x;
 	int 	y;
 }	t_data;
+
+/* hangling free */
+void	free_tab_char(char **tab);
+
+/* hangling output error*/
+void	exit_error(char *str);
+
+/* map input management */
+void	get_map_str(t_data *data, char *filename);
+int	duplicate_handling_map(char *str);
 
 #endif

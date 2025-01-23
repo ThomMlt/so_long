@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handling_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:36:41 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/20 17:02:31 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:05:53 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	get_map_str(t_data *data, char *filename)
 int main(int argc, char **argv)
 {
 	t_data *data;
+	(void)argc;
 	data = malloc(sizeof(t_data));
 	get_map_str(data, argv[1]);
 	free_tab_char(data->map);

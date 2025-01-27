@@ -6,7 +6,7 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/27 16:45:08 by thomas           ###   ########.fr       */
+/*   Updated: 2025/01/27 17:03:50 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_data
 	int		height; // nombre de ligne
 	int		start_x; // colonne augmente en allant vers la droite
 	int		start_y; // ligne augmente en descendant
-	int 	x;
-	int 	y;
+	int 	exit_x;
+	int 	exit_y;
 }	t_data;
 
 /* hangling free */
@@ -44,6 +44,7 @@ int		map_if_rectangular(char **map);
 
 /* init struct data */
 void	get_start_position(t_data *data);
+void	get_exit_position(t_data *data);
 void	init_data(t_data *data, char *name_map);
 int		get_height_map(char **map);
 

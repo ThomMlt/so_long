@@ -6,7 +6,7 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:55:50 by thomas            #+#    #+#             */
-/*   Updated: 2025/01/27 16:45:32 by thomas           ###   ########.fr       */
+/*   Updated: 2025/01/27 17:03:33 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,28 @@ void	get_start_position(t_data *data)
 			{
 				data->start_y = j;
 				data->start_x = i;
+			}
+			i++;
+		}
+		j++;
+	}
+}
+
+void	get_exit_position(t_data *data)
+{
+	int			i;
+	int			j;
+
+	j = 0;
+	while (data->map[j] != NULL)
+	{
+		i = 0;
+		while (data->map[j][i] != '\0')
+		{
+			if (data->map[j][i] == 'E')
+			{
+				data->exit_y = j;
+				data->exit_x = i;
 			}
 			i++;
 		}

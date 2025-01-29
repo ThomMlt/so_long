@@ -6,7 +6,7 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/27 17:03:50 by thomas           ###   ########.fr       */
+/*   Updated: 2025/01/29 09:27:35 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include "./libft_complet/libft/libft.h"
 # include "./libft_complet/gnl/get_next_line.h"
 # include "./libft_complet/printf/ft_printf.h"
+# include "./minilibx/mlx.h"
+
+# define SIZE_IMG 64
+# define PLAYER "./texture/player.xpm"
+# define FLOOR "./texture/floor.xpm"
+# define WALL "./texture/wall.xpm"
+
 
 typedef struct s_data
 {
@@ -25,8 +32,12 @@ typedef struct s_data
 	int		height; // nombre de ligne
 	int		start_x; // colonne augmente en allant vers la droite
 	int		start_y; // ligne augmente en descendant
+	int		size_img;
 	int 	exit_x;
 	int 	exit_y;
+	void	*mlx; // pour initialiser la minilibx
+	void	*mlx_win; // pointer sur la fenetre
+	void	*img; // pointer sur image
 }	t_data;
 
 /* hangling free */

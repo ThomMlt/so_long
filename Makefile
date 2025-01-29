@@ -6,14 +6,14 @@
 #    By: thomas <thomas@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 10:39:22 by thomas            #+#    #+#              #
-#    Updated: 2025/01/23 16:38:14 by thomas           ###   ########.fr        #
+#    Updated: 2025/01/28 08:57:34 by thomas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+# CFLAGS = -Wall -Werror -Wextra -g
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)

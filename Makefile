@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thomas <thomas@student.42.fr>              +#+  +:+       +#+         #
+#    By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 10:39:22 by thomas            #+#    #+#              #
-#    Updated: 2025/01/28 08:57:34 by thomas           ###   ########.fr        #
+#    Updated: 2025/01/29 11:39:27 by tmillot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJS) $(GNL_LIB) $(PRINTF_LIB) $(LIBFT_LIB) $(MINILIBX_LIB)
 		-L$(PRINTF_DIR) -lftprintf \
 		-L$(LIBFT_DIR) -lft \
 		-L$(MINILIBX_DIR) -lmlx \
-		-framework OpenGL -framework AppKit
+		-Imlx -lX11 -lXext
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

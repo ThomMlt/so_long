@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 22:54:11 by thomas            #+#    #+#             */
-/*   Updated: 2025/01/29 11:27:39 by thomas           ###   ########.fr       */
+/*   Updated: 2025/01/29 16:17:48 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,52 @@ void	init_data(t_data *data, char *name_map)
 }
 
 void	put_texture(t_data data, int x, int y, char c)
-{
-	void	*texture;
-	
+{	
 	if (c == '1')
-		texture = mlx_xpm_file_to_image(data.mlx, WALL, &data.size_img, &data.size_img);
+		data.img = mlx_xpm_file_to_image(data.mlx, WALL, &data.size_img, &data.size_img);
 	if (c == '0' || c == 'C' || c == 'E')
-		texture = mlx_xpm_file_to_image(data.mlx, FLOOR, &data.size_img, &data.size_img);
+		data.img = mlx_xpm_file_to_image(data.mlx, FLOOR, &data.size_img, &data.size_img);
 	if (c == 'P')
-		texture = mlx_xpm_file_to_image(data.mlx, PLAYER, &data.size_img, &data.size_img);
-	mlx_put_image_to_window(data.mlx, data.mlx_win, texture, x * SIZE_IMG, y * SIZE_IMG);
+		data.img = mlx_xpm_file_to_image(data.mlx, PLAYER, &data.size_img, &data.size_img);
+	mlx_put_image_to_window(data.mlx, data.mlx_win, data.img, x * SIZE_IMG, y * SIZE_IMG);
 }
 
-int	key_hook(int keycode)
+void moove_player(t_data *data, int x, int y)
 {
-	printf("%d", keycode);
-	return (0);
+	if (data->map[data->start_x + x][data->start_y + y] != '1')
+	{
+		data->map[data->start_x][data->start_y] = '0';
+		data->map[data->start_x + x][data->start_y + y] = 'P';
+		data->start_x += x;
+		data->start_y += y;
+		build_window_image(*data);
+	}	
 }
 
-int main(int argc, char **argv)
+void	key_hook(int keycode, t_data *data)
 {
-	t_data data;
-	(void)argc;
-	init_data(&data, argv[1]);
-	flood_fill(data);
-	int i = 0;
-	int j = 0;
+	if (keycode == ECHAP)
+	{
+		mlx_destroy_window(data->mlx, data->mlx_win);
+		mlx_destroy_display(data->mlx);
+		exit(0);
+	}
+	else if (keycode == 'w')
+		moove_player(data, -1, 0);
+	else if (keycode == 's')
+		moove_player(data, 1, 0);
+	else if (keycode == 'd')
+		moove_player(data, 0, 1);
+	else if (keycode == 'a')
+		moove_player(data, 0, -1);
+}
+
+void	build_window_image(t_data data)
+{
+	int	i;
+	int	j;
+
+	j = 0;
 	while (data.map[j] != NULL)
 	{
 		i = 0;
@@ -72,7 +92,29 @@ int main(int argc, char **argv)
 		}
 		j++;
 	}
-	mlx_hook(data.mlx, 2, 1L << 0, key_hook, &data);
+}
+
+int main(int argc, char **argv)
+{
+	t_data data;
+	(void)argc;
+	init_data(&data, argv[1]);
+	flood_fill(data);
+	build_window_image(data);
+	// int i = 0;
+	// int j = 0;
+	// while (data.map[j] != NULL)
+	// {
+	// 	i = 0;
+	// 	while (data.map[j][i] != '\0')
+	// 	{
+	// 		put_texture(data, i, j, data.map[j][i]);
+	// 		i++;
+	// 	}
+	// 	j++;
+	// }
+	mlx_key_hook(data.mlx_win, &key_hook, &data);
 	mlx_loop(data.mlx);
 	// free_tab_char(data.map);
+	// return (0);
 }

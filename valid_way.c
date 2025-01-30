@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   valid_way.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 22:58:27 by thomas            #+#    #+#             */
-/*   Updated: 2025/01/27 16:59:41 by thomas           ###   ########.fr       */
+/*   Updated: 2025/01/30 13:12:34 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+char	**copy_tab(char **tab)
+{
+	char	**cpy;
+	int		i;
+	int		len;
+
+	i = 0;
+	len = 0;
+	while (tab[len] != NULL)
+		len++;
+	cpy = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!cpy)
+		return (NULL);
+	while (tab[i] != NULL)
+	{
+		cpy[i] = ft_strdup(tab[i]);
+		if (!cpy[i])
+			return (free_tab_char(&cpy[i]), NULL);
+		i++;
+	}
+	cpy[len] = NULL;
+	return (cpy);
+}
 
 void	fill(char ***tab, t_data data, int x, int y)
 {
@@ -53,12 +77,6 @@ void	flood_fill(t_data data)
 	if (!copy_map)
 		exit_error("Failed to copy map");
 	fill(&copy_map, data, data.start_x, data.start_y);
-	// int i = 0;
-	// while (copy_map[i] != NULL)
-	// {
-	// 	printf("%s\n", copy_map[i]);
-	// 	i++;
-	// }
 	if (check_valid_way(copy_map) == 0)
 		exit_error("no way possible for finish");
 	free_tab_char(copy_map);

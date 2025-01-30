@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/29 15:40:32 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:30:10 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define PLAYER "./texture/player.xpm"
 # define FLOOR "./texture/floor.xpm"
 # define WALL "./texture/wall.xpm"
+# define COLLECTIBLE "./texture/collectible.xpm"
+# define EXIT "./texture/exit.xpm"
 # define ECHAP 65307
 
 
@@ -30,6 +32,7 @@ typedef struct s_data
 {
 	char 		**map;
 	int			nb_collectible;
+	int			nb_collectible_pick;
 	int			width; // nombre de colonne
 	int			height; // nombre de ligne
 	int			start_x; // colonne augmente en allant vers la droite
@@ -54,12 +57,14 @@ int 	check_wall_side(char **map);
 int		check_wall_top_bottom(char **map);
 int		duplicate_handling_map(char *str);
 int		map_if_rectangular(char **map);
+int		if_map_not_valid(char *str, char **map);
 
 /* init struct data */
 void	get_start_position(t_data *data);
 void	get_exit_position(t_data *data);
 void	init_data(t_data *data, char *name_map);
 int		get_height_map(char **map);
+int		count_collectible(char **map);
 
 /* check if a valid way */
 void		flood_fill(t_data data);
@@ -67,6 +72,12 @@ void		fill(char ***tab, t_data data, int x, int y);
 int			check_valid_way(char **map);
 char		**copy_tab(char **tab);
 
+/* draw map */
 void	build_window_image(t_data data);
+void	put_texture(t_data data, int x, int y, char c);
+
+/* move player */
+void	move_player(t_data *data, int x, int y);
+void	key_hook(int keycode, t_data *data);
 
 #endif

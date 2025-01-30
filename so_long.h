@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/30 13:30:10 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:32:16 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef struct s_data
 	int 		exit_y;
 	t_xvar		*mlx; // pour initialiser la minilibx
 	t_win_list	*mlx_win; // pointer sur la fenetre
-	t_img		*img; // pointer sur image
+	t_img		*img;
+	t_img		*player; // pointer sur image
 }	t_data;
 
 /* hangling free */

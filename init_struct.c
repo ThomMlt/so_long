@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:09:05 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/30 13:11:38 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:00:15 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_data(t_data *data, char *name_map)
 	get_start_position(data);
 	get_exit_position(data);
 	data->nb_collectible = count_collectible(data->map);
+	data->nb_collectible_pick = 0;
 	data->mlx = mlx_init();
 	data->size_img = 64;
 	data->mlx_win = mlx_new_window(data->mlx, ((data->width + 1) * SIZE_IMG), ((data->height + 1) * SIZE_IMG + 1), "so_long");

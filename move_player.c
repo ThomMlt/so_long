@@ -6,24 +6,11 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:46 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/30 15:59:07 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/01/31 14:50:53 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-// void	move_player(t_data *data, int x, int y)
-// {
-// 	if (data->map[data->start_x + x][data->start_y + y] != '1')
-// 	{
-// 		data->map[data->start_x][data->start_y] = '0';
-// 		data->map[data->start_x + x][data->start_y + y] = 'P';
-// 		data->start_x += x;
-// 		data->start_y += y;
-// 		draw_player(data);
-// 	}	
-// }
 
 void	end_map(t_data *data)
 {
@@ -34,72 +21,72 @@ void	end_map(t_data *data)
 
 void	move_player_up(t_data *data)
 {
-	if (data->map[data->start_x - 1][data->start_y] != '1')
+	if (data->map[data->start_y - 1][data->start_x] != '1')
 	{
-		if (data->map[data->start_x - 1][data->start_y] == 'C')
+		if (data->map[data->start_y - 1][data->start_x] == 'C')
 			data->nb_collectible_pick += 1;
-		if ((data->start_x - 1) != data->exit_x && data->start_y != data->exit_y)
-			data->map[data->start_x][data->start_y] = '0';
+		if (data->start_x != data->exit_x || (data->start_y - 1) != data->exit_y)
+			data->map[data->start_y][data->start_x] = '0';
 		else
-			data->map[data->start_x][data->start_y] = 'E';
-		if (data->map[data->start_x - 1][data->start_y] == 'E' && data->nb_collectible_pick == data->nb_collectible)
+			data->map[data->exit_y][data->exit_x] = 'E';
+		if (data->map[data->start_y - 1][data->start_x] == 'E' && data->nb_collectible_pick == data->nb_collectible)
 			end_map(data);
-		data->map[data->start_x - 1][data->start_y] = 'P';
-		data->start_x -= 1;
+		data->map[data->start_y - 1][data->start_x] = 'P';
+		data->start_y -= 1;
 		build_window_image(*data);
 	}
 }
 
 void	move_player_down(t_data *data)
 {
-	if (data->map[data->start_x + 1][data->start_y] != '1')
+	if (data->map[data->start_y + 1][data->start_x] != '1')
 	{
-		if (data->map[data->start_x + 1][data->start_y] == 'C')
+		if (data->map[data->start_y + 1][data->start_x] == 'C')
 			data->nb_collectible_pick += 1;
-		if (data->start_x + 1 != data->exit_x && data->start_y != data->exit_y)
-			data->map[data->start_x][data->start_y] = '0';
+		if (data->start_x != data->exit_x || (data->start_y + 1) != data->exit_y)
+			data->map[data->start_y][data->start_x] = '0';
 		else
-			data->map[data->start_x][data->start_y] = 'E';
-		if (data->map[data->start_x + 1][data->start_y] == 'E' && data->nb_collectible_pick == data->nb_collectible)
+			data->map[data->exit_y][data->exit_x] = 'E';
+		if (data->map[data->start_y + 1][data->start_x] == 'E' && data->nb_collectible_pick == data->nb_collectible)
 			end_map(data);
-		data->map[data->start_x + 1][data->start_y] = 'P';
-		data->start_x += 1;
+		data->map[data->start_y + 1][data->start_x] = 'P';
+		data->start_y += 1;
 		build_window_image(*data);
 	}
 }
 
 void	move_player_left(t_data *data)
 {
-	if (data->map[data->start_x][data->start_y - 1] != '1')
+	if (data->map[data->start_y][data->start_x - 1] != '1')
 	{
-		if (data->map[data->start_x][data->start_y - 1] == 'C')
+		if (data->map[data->start_y][data->start_x - 1] == 'C')
 			data->nb_collectible_pick += 1;
-		if (data->start_x != data->exit_x && data->start_y - 1 != data->exit_y)
-			data->map[data->start_x][data->start_y] = '0';
+		if ((data->start_x - 1) != data->exit_x || data->start_y != data->exit_y)
+			data->map[data->start_y][data->start_x] = '0';
 		else
-			data->map[data->start_x][data->start_y] = 'E';
-		if (data->map[data->start_x][data->start_y - 1] == 'E' && data->nb_collectible_pick == data->nb_collectible)
+			data->map[data->exit_y][data->exit_x] = 'E';
+		if (data->map[data->start_y][data->start_x - 1] == 'E' && data->nb_collectible_pick == data->nb_collectible)
 			end_map(data);
-		data->map[data->start_x][data->start_y - 1] = 'P';
-		data->start_y -= 1;
+		data->map[data->start_y][data->start_x - 1] = 'P';
+		data->start_x -= 1;
 		build_window_image(*data);
 	}
 }
 
 void	move_player_right(t_data *data)
 {
-	if (data->map[data->start_x][data->start_y + 1] != '1')
+	if (data->map[data->start_y][data->start_x + 1] != '1')
 	{
-		if (data->map[data->start_x][data->start_y + 1] == 'C')
+		if (data->map[data->start_y][data->start_x + 1] == 'C')
 			data->nb_collectible_pick += 1;
-		if (data->start_x != data->exit_x && data->start_y + 1 != data->exit_y)
-			data->map[data->start_x][data->start_y] = '0';
+		if ((data->start_x + 1)  != data->exit_x || data->start_y != data->exit_y)
+			data->map[data->start_y][data->start_x] = '0';
 		else
-			data->map[data->start_x][data->start_y] = 'E';
-		if (data->map[data->start_x][data->start_y + 1] == 'E' && data->nb_collectible_pick == data->nb_collectible)
+			data->map[data->exit_y][data->exit_x] = 'E';
+		if (data->map[data->start_y][data->start_x + 1] == 'E' && data->nb_collectible_pick == data->nb_collectible)
 			end_map(data);
-		data->map[data->start_x][data->start_y + 1] = 'P';
-		data->start_y += 1;
+		data->map[data->start_y][data->start_x + 1] = 'P';
+		data->start_x += 1;
 		build_window_image(*data);
 	}
 }

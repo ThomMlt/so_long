@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/01/30 13:32:16 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:23:13 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,21 @@
 # include "./minilibx/mlx_int.h"
 
 # define SIZE_IMG 64
-# define PLAYER "./texture/player.xpm"
-# define FLOOR "./texture/floor.xpm"
-# define WALL "./texture/wall.xpm"
+# define PLAYER_D "./texture/player_down.xpm"
+# define PLAYER_U "./texture/player_up.xpm"
+# define PLAYER_L "./texture/player_left.xpm"
+# define PLAYER_R "./texture/player_right.xpm"
+# define FLOOR1 "./texture/floor_1.xpm"
+# define FLOOR2 "./texture/floor_2.xpm"
+# define WALL_D "./texture/wall_down.xpm"
+# define WALL_U "./texture/wall_up.xpm"
+# define WALL_S_L "./texture/side_left.xpm"
+# define WALL_S_R "./texture/side_right.xpm"
+# define WALL_C_L "./texture/corner_left.xpm"
+# define WALL_C_R "./texture/corner_right.xpm"
+# define WALL_C_L_D "./texture/corner_left_down.xpm"
+# define WALL_C_R_D "./texture/corner_right_down.xpm"
+# define HOLE "./texture/hole.xpm"
 # define COLLECTIBLE "./texture/collectible.xpm"
 # define EXIT "./texture/exit.xpm"
 # define ECHAP 65307
@@ -73,8 +85,8 @@ void		fill(char ***tab, t_data data, int x, int y);
 int			check_valid_way(char **map);
 char		**copy_tab(char **tab);
 
-/* draw map */
-void	build_window_image(t_data data);
+/* draw map in beggin*/
+void	build_window_image_beggin(t_data data);
 void	put_texture(t_data data, int x, int y, char c);
 
 /* move player */

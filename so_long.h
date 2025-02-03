@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/02 23:23:13 by thomas           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:27:29 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "./minilibx/mlx.h"
 # include "./minilibx/mlx_int.h"
 
-# define SIZE_IMG 64
+# define SIZE_IMG 32
 # define PLAYER_D "./texture/player_down.xpm"
 # define PLAYER_U "./texture/player_up.xpm"
 # define PLAYER_L "./texture/player_left.xpm"
@@ -30,10 +30,10 @@
 # define WALL_U "./texture/wall_up.xpm"
 # define WALL_S_L "./texture/side_left.xpm"
 # define WALL_S_R "./texture/side_right.xpm"
-# define WALL_C_L "./texture/corner_left.xpm"
-# define WALL_C_R "./texture/corner_right.xpm"
-# define WALL_C_L_D "./texture/corner_left_down.xpm"
-# define WALL_C_R_D "./texture/corner_right_down.xpm"
+# define WALL_C_L "./texture/corner_up_left.xpm"
+# define WALL_C_R "./texture/corner_up_right.xpm"
+# define WALL_C_L_D "./texture/corner_down_left.xpm"
+# define WALL_C_R_D "./texture/corner_down_right.xpm"
 # define HOLE "./texture/hole.xpm"
 # define COLLECTIBLE "./texture/collectible.xpm"
 # define EXIT "./texture/exit.xpm"
@@ -88,6 +88,9 @@ char		**copy_tab(char **tab);
 /* draw map in beggin*/
 void	build_window_image_beggin(t_data data);
 void	put_texture(t_data data, int x, int y, char c);
+t_img	*handling_wall(t_data data, int x, int y);
+void	build_window_image_after_move(t_data data, int direction);
+void	put_texture_after_move(t_data data, int x, int y, char c, int direction);
 
 /* move player */
 void	move_player(t_data *data, int x, int y);

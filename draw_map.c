@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:23:38 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/02 23:02:48 by thomas           ###   ########.fr       */
+/*   Updated: 2025/02/03 11:55:41 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ void	build_window_image_beggin(t_data data)
 void	put_texture(t_data data, int x, int y, char c)
 {
 	if (c == '1')
-		data.img = mlx_xpm_file_to_image(data.mlx, WALL, &data.size_img, &data.size_img);
+		data.img = handling_wall(data, x, y);
 	else if (c == '0')
 	{
-		if ((y % 2) == 0 && (x % 1) != 0)
+		if ((y % 2) == 0 && (x % 5) == 0)
 			data.img = mlx_xpm_file_to_image(data.mlx, FLOOR2, &data.size_img, &data.size_img);
 		else
 			data.img = mlx_xpm_file_to_image(data.mlx, FLOOR1, &data.size_img, &data.size_img);
 	}
 	else if (c == 'C')
 		data.img = mlx_xpm_file_to_image(data.mlx, COLLECTIBLE, &data.size_img, &data.size_img);
-	else if (c == 'E' && data.nb_collectible_pick == data.nb_collectible)
+	else if (data.nb_collectible_pick == data.nb_collectible)
 		data.img = mlx_xpm_file_to_image(data.mlx, EXIT, &data.size_img, &data.size_img);
 	else if (c == 'E' && data.nb_collectible_pick != data.nb_collectible)
 		data.img = mlx_xpm_file_to_image(data.mlx, FLOOR1, &data.size_img, &data.size_img);

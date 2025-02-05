@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:46 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/03 13:28:21 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:14:05 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ void	move_player_up(t_data *data)
 			end_map(data);
 		data->map[data->start_y - 1][data->start_x] = 'P';
 		data->start_y -= 1;
-		build_window_image_after_move(*data, 1);
+		data->move += 1;
+		ft_printf("move player : %d\n", data->move);
+		// build_window_image_after_move(*data, 1);
 	}
+	build_window_image_after_move(*data, 1);
 }
 
 void	move_player_down(t_data *data)
@@ -47,8 +50,11 @@ void	move_player_down(t_data *data)
 			end_map(data);
 		data->map[data->start_y + 1][data->start_x] = 'P';
 		data->start_y += 1;
-		build_window_image_after_move(*data, 2);
+		data->move += 1;
+		ft_printf("move player : %d\n", data->move);
+		// build_window_image_after_move(*data, 2);
 	}
+	build_window_image_after_move(*data, 2);
 }
 
 void	move_player_left(t_data *data)
@@ -63,8 +69,11 @@ void	move_player_left(t_data *data)
 			end_map(data);
 		data->map[data->start_y][data->start_x - 1] = 'P';
 		data->start_x -= 1;
-		build_window_image_after_move(*data, 3);
+		data->move += 1;
+		ft_printf("move player : %d\n", data->move);
+		// build_window_image_after_move(*data, 3);
 	}
+	build_window_image_after_move(*data, 3);
 }
 
 void	move_player_right(t_data *data)
@@ -79,11 +88,14 @@ void	move_player_right(t_data *data)
 			end_map(data);
 		data->map[data->start_y][data->start_x + 1] = 'P';
 		data->start_x += 1;
-		build_window_image_after_move(*data, 4);
+		data->move += 1;
+		ft_printf("move player : %d\n", data->move);
+		// build_window_image_after_move(*data, 4);
 	}
+	build_window_image_after_move(*data, 4);
 }
 
-void	key_hook(int keycode, t_data *data)
+int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == ECHAP)
 	{
@@ -99,4 +111,5 @@ void	key_hook(int keycode, t_data *data)
 		move_player_right(data);
 	else if (keycode == 'a')
 		move_player_left(data);
+	return (1);
 }

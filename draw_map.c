@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:23:38 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/03 11:55:41 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/03 16:52:58 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ void	put_texture(t_data data, int x, int y, char c)
 		data.img = handling_wall(data, x, y);
 	else if (c == '0')
 	{
-		if ((y % 2) == 0 && (x % 5) == 0)
+		if ((7 * x - 3 * y + 2 * x * y) % 5 == 0) // (y % 2) == 0 && (x % 5) == 0
 			data.img = mlx_xpm_file_to_image(data.mlx, FLOOR2, &data.size_img, &data.size_img);
+		else if ((3 * x + 2 * y + 7 * x * y) % 5 == 0 && (y % 2) == 0) // ((y + 1) % 2) == 0 && ((x - 1) % 5) == 0
+			data.img = mlx_xpm_file_to_image(data.mlx, FLOOR3, &data.size_img, &data.size_img);
 		else
 			data.img = mlx_xpm_file_to_image(data.mlx, FLOOR1, &data.size_img, &data.size_img);
 	}

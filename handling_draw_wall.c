@@ -6,13 +6,25 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:04:22 by thomas            #+#    #+#             */
-/*   Updated: 2025/02/03 14:49:13 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:33:15 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
+t_img	*handling_wall_mid(t_data data, int x, int y)
+{
+	t_img	*wall;
+	
+	if (data.map[y - 1][x] != '1' && data.map[y + 1][x] != '1' && data.map[y][x - 1] != '1'
+		&& data.map[y][x + 1] != '1')
+		wall = mlx_xpm_file_to_image(data.mlx, HOLE, &data.size_img, &data.size_img);
+	else if ((y % 2) == 0)
+		wall = mlx_xpm_file_to_image(data.mlx, ROCK, &data.size_img, &data.size_img);
+	else if ((y % 2) != 0)
+		wall = mlx_xpm_file_to_image(data.mlx, ROCK2, &data.size_img, &data.size_img);
+	return (wall);
+}
 
 t_img	*handling_wall(t_data data, int x, int y)
 {
@@ -34,5 +46,7 @@ t_img	*handling_wall(t_data data, int x, int y)
 		wall = mlx_xpm_file_to_image(data.mlx, WALL_D, &data.size_img, &data.size_img);
 	else if (y == data.height && x == data.width)
 		wall = mlx_xpm_file_to_image(data.mlx, WALL_C_R_D, &data.size_img, &data.size_img);
+	else
+		wall = handling_wall_mid(data, x, y);
 	return (wall);
 }

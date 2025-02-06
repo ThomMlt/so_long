@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/05 17:15:24 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/06 14:13:59 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "./minilibx/mlx.h"
 # include "./minilibx/mlx_int.h"
 
-# define SIZE_IMG 64
+# define SIZE 64
 # define PLAYER_D "./texture/player_down.xpm"
 # define PLAYER_U "./texture/player_up.xpm"
 # define PLAYER_L "./texture/player_left.xpm"
@@ -65,6 +65,7 @@ typedef struct s_data
 /* hangling free */
 void	free_tab_char(char **tab);
 void	exit_error_free(char *str, char *str_free, char **map);
+void	cleanup(t_data *data);
 
 /* hangling output error*/
 void	exit_error(char *str);
@@ -87,17 +88,18 @@ int		get_height_map(char **map);
 int		count_collectible(char **map);
 
 /* check if a valid way */
-void		flood_fill(t_data data);
+int			flood_fill(t_data data);
 void		fill(char ***tab, t_data data, int x, int y);
 int			check_valid_way(char **map);
 char		**copy_tab(char **tab);
+char		**get_map_parse(t_data data, char *filename);
 
 /* draw map in beggin*/
 void	build_window_image_beggin(t_data data);
 void	put_texture(t_data data, int x, int y, char c);
 t_img	*handling_wall(t_data data, int x, int y);
 void	build_window_image_after_move(t_data data, int direction);
-void	put_texture_after_move(t_data data, int x, int y, char c, int direction);
+void	put_texture_after_move(t_data data, int x, int y, int direction);
 
 /* move player */
 void	move_player(t_data *data, int x, int y);

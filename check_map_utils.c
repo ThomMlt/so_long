@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   if_empty_line.c                                    :+:      :+:    :+:   */
+/*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:09:56 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/05 17:59:25 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/06 14:03:26 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int	if_empty_line(char *str)
 {
-    int	i;
-    int	line_start;
+	int	i;
+	int	line_start;
 
 	i = 0;
 	line_start = 1;
-    while (str[i] != '\0')
-    {
-        if (str[i] == '\n')
-        {
-            if (line_start)
-                return (0);
-            line_start = 1;
-        }
-        else if (str[i] != ' ' && str[i] != '\t')
-        {
-            line_start = 0;
-        }
-        i++;
-    }
-    return (1);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n')
+		{
+			if (line_start)
+				return (0);
+			line_start = 1;
+		}
+		else if (str[i] != ' ' && str[i] != '\t')
+		{
+			line_start = 0;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	duplicate_handling_map(char *str)
@@ -81,4 +81,13 @@ int	map_if_rectangular(char **map)
 		i++;
 	}
 	return (1);
+}
+
+char	**get_map_parse(t_data data, char *filename)
+{
+	char	**map;
+
+	map = get_map_str(filename);
+	flood_fill(data);
+	return (map);
 }

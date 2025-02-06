@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:21:17 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/03 13:33:07 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/06 14:19:01 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,32 @@ void	build_window_image_after_move(t_data data, int direction)
 		i = 0;
 		while (data.map[j][i] != '\0')
 		{
-			put_texture_after_move(data, i, j, data.map[j][i], direction);
+			put_texture_after_move(data, i, j, direction);
 			i++;
 		}
 		j++;
 	}
 }
 
-void	put_texture_after_move(t_data data, int x, int y, char c, int direction)
+void	put_texture_after_move(t_data data, int x, int y, int direction)
 {
-	if (c != 'P')
-		put_texture(data, x, y, c);
-	else if (c == 'P')
+	int	s;
+
+	s = data.size_img;
+	if (data.map[y][x] != 'P')
+		put_texture(data, x, y, data.map[y][x]);
+	else if (data.map[y][x] == 'P')
 	{
 		if (direction == 1)
-			data.img  = mlx_xpm_file_to_image(data.mlx, PLAYER_U, &data.size_img, &data.size_img);
+			data.img = mlx_xpm_file_to_image(data.mlx, PLAYER_U, &s, &s);
 		if (direction == 2)
-			data.img  = mlx_xpm_file_to_image(data.mlx, PLAYER_D, &data.size_img, &data.size_img);
+			data.img = mlx_xpm_file_to_image(data.mlx, PLAYER_D, &s, &s);
 		if (direction == 3)
-			data.img  = mlx_xpm_file_to_image(data.mlx, PLAYER_L, &data.size_img, &data.size_img);
+			data.img = mlx_xpm_file_to_image(data.mlx, PLAYER_L, &s, &s);
 		if (direction == 4)
-			data.img  = mlx_xpm_file_to_image(data.mlx, PLAYER_R, &data.size_img, &data.size_img);
-	mlx_put_image_to_window(data.mlx, data.mlx_win, data.img, x * SIZE_IMG, y * SIZE_IMG);
-	mlx_destroy_image(data.mlx, data.img);
+			data.img = mlx_xpm_file_to_image(data.mlx, PLAYER_R, &s, &s);
+		mlx_put_image_to_window(data.mlx,
+			data.mlx_win, data.img, x * SIZE, y * SIZE);
+		mlx_destroy_image(data.mlx, data.img);
 	}
 }

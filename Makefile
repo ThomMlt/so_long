@@ -6,14 +6,14 @@
 #    By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 10:39:22 by thomas            #+#    #+#              #
-#    Updated: 2025/01/29 11:39:27 by tmillot          ###   ########.fr        #
+#    Updated: 2025/02/06 13:11:17 by tmillot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = cc
-# CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)

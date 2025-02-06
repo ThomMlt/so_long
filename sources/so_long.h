@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/06 16:54:28 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:57:04 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int		duplicate_handling_map(char *str);
 int		map_if_rectangular(char **map);
 int		if_map_not_valid(char *str, char **map);
 int		if_empty_line(char *str);
+int		check_extension(char *name_map);
 
 /* init struct data */
 void	get_start_position(t_data *data);

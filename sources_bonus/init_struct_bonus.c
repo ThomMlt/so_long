@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_struct.c                                      :+:      :+:    :+:   */
+/*   init_struct_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:09:05 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/07 15:43:03 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:42:59 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	init_data(t_data *data, char *name_map)
 {
@@ -20,6 +20,7 @@ void	init_data(t_data *data, char *name_map)
 		data->width = (ft_strlen(data->map[0]) - 1);
 		data->height = get_height_map(data->map);
 		get_start_position(data);
+		find_enemy(data);
 		get_exit_position(data);
 		data->nb_collectible = count_collectible(data->map);
 		data->nb_collectible_pick = 0;

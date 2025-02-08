@@ -6,12 +6,13 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/06 16:57:04 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 14:18:18 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
 
 # include "../libft_complet/libft/libft.h"
 # include "../libft_complet/gnl/get_next_line.h"
@@ -20,26 +21,26 @@
 # include "../minilibx/mlx_int.h"
 
 # define SIZE 64
-# define PLAYER_D "../texture/player_down.xpm"
-# define PLAYER_U "../texture/player_up.xpm"
-# define PLAYER_L "../texture/player_left.xpm"
-# define PLAYER_R "../texture/player_right.xpm"
-# define FLOOR1 "../texture/floor_1.xpm"
-# define FLOOR2 "../texture/floor_2.xpm"
-# define FLOOR3 "../texture/floor_3.xpm"
-# define WALL_D "../texture/wall_down.xpm"
-# define WALL_U "../texture/wall_up.xpm"
-# define WALL_S_L "../texture/side_left.xpm"
-# define WALL_S_R "../texture/side_right.xpm"
-# define WALL_C_L "../texture/corner_up_left.xpm"
-# define WALL_C_R "../texture/corner_up_right.xpm"
-# define WALL_C_L_D "../texture/corner_down_left.xpm"
-# define WALL_C_R_D "../texture/corner_down_right.xpm"
-# define ROCK "../texture/wall_middle.xpm"
-# define ROCK2 "../texture/wall_2.xpm"
-# define HOLE "../texture/hole.xpm"
-# define COLLECTIBLE "../texture/collectible.xpm"
-# define EXIT "../texture/exit.xpm"
+# define PLAYER_D "texture/player_down.xpm"
+# define PLAYER_U "texture/player_up.xpm"
+# define PLAYER_L "texture/player_left.xpm"
+# define PLAYER_R "texture/player_right.xpm"
+# define FLOOR1 "texture/floor_1.xpm"
+# define FLOOR2 "texture/floor_2.xpm"
+# define FLOOR3 "texture/floor_3.xpm"
+# define WALL_D "texture/wall_down.xpm"
+# define WALL_U "texture/wall_up.xpm"
+# define WALL_S_L "texture/side_left.xpm"
+# define WALL_S_R "texture/side_right.xpm"
+# define WALL_C_L "texture/corner_up_left.xpm"
+# define WALL_C_R "texture/corner_up_right.xpm"
+# define WALL_C_L_D "texture/corner_down_left.xpm"
+# define WALL_C_R_D "texture/corner_down_right.xpm"
+# define ROCK "texture/wall_middle.xpm"
+# define ROCK2 "texture/wall_2.xpm"
+# define HOLE "texture/hole.xpm"
+# define COLLECTIBLE "texture/collectible.xpm"
+# define EXIT "texture/exit.xpm"
 # define ECHAP 65307
 
 typedef struct s_data

@@ -13,7 +13,6 @@
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-
 # include "../libft_complet/libft/libft.h"
 # include "../libft_complet/gnl/get_next_line.h"
 # include "../libft_complet/printf/ft_printf.h"

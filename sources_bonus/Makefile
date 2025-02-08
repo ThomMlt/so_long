@@ -6,7 +6,7 @@
 #    By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 10:39:22 by thomas            #+#    #+#              #
-#    Updated: 2025/02/07 16:06:35 by tmillot          ###   ########.fr        #
+#    Updated: 2025/02/08 13:37:04 by tmillot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = check_map_utils_bonus.c \
 		draw_map_bonus.c \
 		handling_map_bonus.c \
 		valid_way_bonus.c \
-		enemy_handling.c 
+		display_move.c 
 
 OBJS = $(SRCS:.c=.o)
 

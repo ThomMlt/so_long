@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:46 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/07 17:37:37 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 13:39:24 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	move_player_up(t_data *data)
 		data->map[data->start_y - 1][data->start_x] = 'P';
 		data->start_y -= 1;
 		data->move += 1;
-		ft_printf("\rmove player : %d\n", data->move);
 	}
 	build_window_image_after_move(*data, 1);
 }
@@ -49,7 +48,6 @@ void	move_player_down(t_data *data)
 		data->map[data->start_y + 1][data->start_x] = 'P';
 		data->start_y += 1;
 		data->move += 1;
-		ft_printf("\rmove player : %d\n", data->move);
 	}
 	build_window_image_after_move(*data, 2);
 }
@@ -70,7 +68,6 @@ void	move_player_left(t_data *data)
 		data->map[data->start_y][data->start_x - 1] = 'P';
 		data->start_x -= 1;
 		data->move += 1;
-		ft_printf("\rmove player : %d\n", data->move);
 	}
 	build_window_image_after_move(*data, 3);
 }
@@ -85,13 +82,12 @@ void	move_player_right(t_data *data)
 		if (data->map[data->start_y][data->start_x + 1] == 'M')
 			(ft_printf("you died"), close_window(data));
 		if ((data->start_y == data->exit_y
-			&& data->start_x + 1 == data->exit_x
-			&& data->nb_collectible_pick == data->nb_collectible))
+				&& data->start_x + 1 == data->exit_x
+				&& data->nb_collectible_pick == data->nb_collectible))
 			(ft_printf("you win"), close_window(data));
 		data->map[data->start_y][data->start_x + 1] = 'P';
 		data->start_x += 1;
 		data->move += 1;
-		ft_printf("\rmove player : %d\n", data->move);
 	}
 	build_window_image_after_move(*data, 4);
 }

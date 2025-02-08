@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 22:54:11 by thomas            #+#    #+#             */
-/*   Updated: 2025/02/07 16:34:16 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 11:41:29 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 		build_window_image_beggin(data);
 		mlx_hook(data.mlx_win, 2, 1L << 0, &key_hook, &data);
 		mlx_hook(data.mlx_win, 17, 0, &close_window, &data);
-		// mlx_loop_hook(data.mlx, animation_loop, &data);
 		mlx_loop(data.mlx);
 	}
 	else

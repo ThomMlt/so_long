@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:21:17 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/06 17:02:33 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 11:57:56 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	put_texture_after_move(t_data data, int x, int y, int direction)
 			data.mlx_win, data.img, x * SIZE, y * SIZE);
 		mlx_destroy_image(data.mlx, data.img);
 	}
+	display_moves(&data);
 }

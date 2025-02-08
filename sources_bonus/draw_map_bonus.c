@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:23:38 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/07 17:31:05 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 13:51:43 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ void	put_texture(t_data data, int x, int y, char c)
 	mlx_put_image_to_window(data.mlx, data.mlx_win, data.img,
 		x * SIZE, y * SIZE);
 	mlx_destroy_image(data.mlx, data.img);
+	display_moves(&data);
 }

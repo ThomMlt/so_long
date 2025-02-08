@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:09:56 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/07 16:16:29 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 13:38:02 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	duplicate_handling_map(char *str)
 	c_p = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] != '1' && str[i] != '0' && str[i] != 'P'
-			&& str[i] != 'C' && str[i] != 'E' && str[i] != '\n' && str[i] != 'M')
+		if (str[i] != '1' && str[i] != '0' && str[i] != 'P' && str[i] != 'C'
+			&& str[i] != 'E' && str[i] != '\n' && str[i] != 'M')
 			return (0);
 		if (str[i] == 'E')
 			c_e++;

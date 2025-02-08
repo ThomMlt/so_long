@@ -6,7 +6,7 @@
 /*   By: tmillot <tmillot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:02:19 by tmillot           #+#    #+#             */
-/*   Updated: 2025/02/07 16:05:47 by tmillot          ###   ########.fr       */
+/*   Updated: 2025/02/08 13:52:34 by tmillot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,6 @@ void	move_player_down(t_data *data);
 void	move_player_left(t_data *data);
 void	move_player_right(t_data *data);
 int		key_hook(int keycode, t_data *data);
-
-/* handling enemy */
-void	find_enemy(t_data *data);
-void	update_enemy_position(t_data *data);
-void	draw_enemy(t_data *data);
-int     animation_loop(t_data *data);
+void	display_moves(t_data *data);
 
 #endif
